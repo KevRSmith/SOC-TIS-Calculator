@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Series Calculator</h1>
+        <div id="calculator">
+            <div class="date-field">
+                <label for="end-date">Series End Date (MM/DD/YYYY):</label>
+                <input type="text" id="end-date" required>
+            </div>
+            <div class="date-field">
+                <label for="start-date">Series Start Date (MM/DD/YYYY):</label>
+                <input type="text" id="start-date" required>
+            </div>
+            <div id="additional-fields"></div>
+            <div class="buttons">
+                <button id="add-fields">+</button>
+                <button id="remove-fields">-</button>
+                <button id="calculate">Calculate</button>
+                <button id="instructions">i</button>
+            </div>
+        </div>
+        <div id="results" style="display: none;">
+            <h2>Results:</h2>
+            <p>Days: <span id="days-result"></span></p>
+            <p>Years in Series: <span id="years-result"></span></p>
+        </div>
+    </div>
+    <div id="instructions-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Instructions</h2>
+            <p>Enter the most recent Series End Date, if before June 30, 2024.</p>
+            <p>(If the Series End Date is after the Step Implementation Date, enter 6/30/2024.)</p>
+            <p>Enter the most recent Series Start Date.</p>
+            <p>Press Calculate</p>
+            <p>Note: Years are to be rounded down to a complete year (Example: 4.87 is rounded down to 4.00)</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
