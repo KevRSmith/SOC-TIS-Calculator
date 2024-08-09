@@ -1,14 +1,46 @@
+/* Title container adjustments */
+#title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Instructions button */
+#instructions {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Date field labels and inputs */
+.date-field label {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
 input[type="text"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    margin-bottom: 10px;
 }
 
+/* Buttons container */
 .buttons {
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
+/* General button styles */
 button {
     padding: 10px 15px;
     background: #333;
@@ -16,20 +48,23 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-right: 10px;
 }
 
 button:hover {
     background: #555;
 }
 
+/* Results container */
 #results {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 20px 0;
 }
 
+/* Modal styling remains the same */
 .modal {
     display: none;
     position: fixed;
