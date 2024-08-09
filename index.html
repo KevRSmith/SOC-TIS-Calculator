@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Series Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js></script>
 </head>
 <body>
     <div class="container">
-        <h1>Series Calculator</h1>
+        <div id="title-container">
+            <h1>Series Calculator</h1>
+            <button id "instructions">i</button>
+        </div>
         <div id="calculator">
             <div class="date-field">
                 <label for="end-date">Series End Date (MM/DD/YYYY):</label>
@@ -23,7 +27,6 @@
                 <button id="add-fields">+</button>
                 <button id="remove-fields">-</button>
                 <button id="calculate">Calculate</button>
-                <button id="instructions">i</button>
             </div>
         </div>
         <div id="results" style="display: none;">
