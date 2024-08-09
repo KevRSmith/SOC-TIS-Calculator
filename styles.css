@@ -1,10 +1,10 @@
-/* Container remains with padding */
+/* Container with default padding */
 .container {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Title container remains the same */
+/* Title container with button aligned */
 #title-container {
     display: flex;
     align-items: center;
@@ -14,7 +14,6 @@
 
 /* Instructions button */
 #instructions {
-    margin-left: 10px;
     padding: 5px 10px;
     background: #333;
     color: #fff;
@@ -26,7 +25,7 @@
 /* Date field labels and fixed size inputs */
 .date-field label {
     display: inline-block;
-    width: 100%;
+    width: 200px;  /* Fixed width for labels to align with inputs */
     margin-bottom: 5px;
     text-align: left;
 }
@@ -42,8 +41,12 @@ input[type="text"] {
 /* Buttons container */
 .buttons {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
+}
+
+.buttons button {
+    margin-right: 10px;
 }
 
 /* General button styles */
