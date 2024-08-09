@@ -41,6 +41,10 @@ input[type="text"] {
     margin-bottom: 10px;
 }
 
+.error-message {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
 
 .buttons {
     display: flex;
