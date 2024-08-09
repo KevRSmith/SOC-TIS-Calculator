@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+
     const addFieldsBtn = document.getElementById('add-fields');
     const removeFieldsBtn = document.getElementById('remove-fields');
     const calculateBtn = document.getElementById('calculate');
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     let fieldCount = 0;
 
+    // Function to parse and validate date format
     function parseDate(dateStr) {
         const formats = ['MM/DD/YYYY', 'MM/DD/YY'];
         for (let format of formats) {
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return null;
     }
 
-        function showError(input, message) {
+    function showError(input, message) {
         clearError(input);
         const errorSpan = document.createElement('span');
         errorSpan.className = 'error-message';
@@ -58,11 +60,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         newFields.innerHTML = `
             <div class="date-field">
                 <label for="end-date-${fieldCount}">Series End Date (MM/DD/YYYY):</label>
-                <input type="text" id="end-date-${fieldCount}">
+                <input type="text" id="end-date-${fieldCount}" onblur="validateDateInput('end-date-${fieldCount}')">
             </div>
             <div class="date-field">
                 <label for="start-date-${fieldCount}">Series Start Date (MM/DD/YYYY):</label>
-                <input type="text" id="start-date-${fieldCount}">
+                <input type="text" id="start-date-${fieldCount}" onblur="validateDateInput('start-date-${fieldCount}')">
             </div>
         `;
         additionalFields.appendChild(newFields);
@@ -77,8 +79,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function calculateDays() {
         let totalDays = 0;
+        let allValid = true;
 
         function processDates(startId, endId) {
+            const startDateValid = validateDateInput(startId);
+            const endDateValid = validateDateInput(endId);
+            if (!startDateValid || !endDateValid) {
+                allValid = false;
+                return;
+            }
+
             const startDate = parseDate(document.getElementById(startId).value);
             const endDate = parseDate(document.getElementById(endId).value);
             if (startDate && endDate) {
@@ -92,12 +102,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             processDates(`start-date-${i}`, `end-date-${i}`);
         }
 
-        daysResult.textContent = totalDays;
-        yearsResult.textContent = (totalDays / 365.25).toFixed(3);
-        resultsDiv.style.display = 'block';
+        if (allValid) {
+            daysResult.textContent = totalDays;
+            yearsResult.textContent = (totalDays / 365.25).toFixed(3);
+            resultsDiv.style.display = 'block';
+        }
     }
 
-    addFieldsBtn.addEventListener('click', addDateFields);
+     addFieldsBtn.addEventListener('click', addDateFields);
     removeFieldsBtn.addEventListener('click', removeDateFields);
     calculateBtn.addEventListener('click', calculateDays);
 
@@ -114,4 +126,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             modal.style.display = "none";
         }
     }
+    
+    document.getElementById('start-date').addEventListener('blur', () => validateDateInput('start-date'));
+    document.getElementById('end-date').addEventListener('blur', () => validateDateInput('end-date'));
 });
+
