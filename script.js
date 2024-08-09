@@ -23,6 +23,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return null;
     }
 
+        function showError(input, message) {
+        clearError(input);
+        const errorSpan = document.createElement('span');
+        errorSpan.className = 'error-message';
+        errorSpan.style.color = 'red';
+        errorSpan.innerText = message;
+        input.parentElement.appendChild(errorSpan);
+    }
+
+    function clearError(input) {
+        const error = input.parentElement.querySelector('.error-message');
+        if (error) {
+            error.remove();
+        }
+    }
+
+    function validateDateInput(inputId) {
+        const input = document.getElementById(inputId);
+        const datePattern = /^\d{2}\/\d{2}\/\d{2,4}$/;
+        if (!datePattern.test(input.value)) {
+            showError(input, "Please enter the date in MM/DD/YY or MM/DD/YYYY format");
+            return false;
+        } else {
+            clearError(input);
+            return true;
+        }
+    }
+
     function addDateFields() {
         if (fieldCount >= 10) return;
         fieldCount++;
