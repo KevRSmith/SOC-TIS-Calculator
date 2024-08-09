@@ -44,14 +44,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function validateDateInput(inputId) {
         const input = document.getElementById(inputId);
         const datePattern = /^\d{2}\/\d{2}\/\d{2,4}$/;
-        if (!datePattern.test(input.value)) {
-            showError(input, "Please enter the date in MM/DD/YY or MM/DD/YYYY format");
-            return false;
-        } else {
-            clearError(input);
-            return true;
-        }
+        
+    if (input.value.trim() === '') {
+        clearError(input);
+        return true;    
     }
+
+    if (!datePattern.test(input.value)) {
+        showError(input, "Enter Date in MM/DD/YY or MM/DD/YYYY format");
+        return false;
+    } else {
+        clearError(input);
+        return true;
+    }
+}
 
     function addDateFields() {
         if (fieldCount >= 10) return;
